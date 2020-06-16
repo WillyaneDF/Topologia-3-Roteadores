@@ -1,0 +1,25 @@
+enable
+conf t
+hostname SW-CORE-02
+vlan 10
+name USUARIOS2
+vlan 20
+name TI2
+vlan 30
+name SERVIDORES2
+interface f0/24 
+switchport mode trunk 
+switchport trunk native vlan 99
+switchport trunk allowed vlan 10,20,30,99
+interface f0/23
+switchport mode access
+switchport access vlan 30
+interface g0/1
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 10,20,30,99
+interface range f0/1-22
+shutdown
+interface range g0/2
+shutdown
+do wr

@@ -1,0 +1,40 @@
+enable
+conf t
+hostname RT-03
+interface g0/0
+no shutdown
+interface g0/0.10
+encapsulation dot1q 10
+ip address 172.16.0.1 255.255.224.0
+ip helper-address 172.16.46.162
+interface g0/0.20
+encapsulation dot1q 20
+ip address 172.16.40.1 255.255.252.0
+ip helper-address 172.16.46.162
+interface g0/0.30
+encapsulation dot1q 30
+ip address 172.16.46.161 255.255.255.224
+interface s0/0/0
+ip address 200.100.0.6 255.255.255.252 
+no shutdown
+interface s0/0/1
+ip address 200.100.0.10 255.255.255.252 
+no shutdown
+exit
+ip route 172.16.46.0 255.255.255.128 200.100.0.5
+ip route 172.16.46.128 255.255.255.224 200.100.0.5
+ip route 172.16.46.208 255.255.255.248 200.100.0.5
+ip route 172.16.46.0 255.255.255.128 200.100.0.9
+ip route 172.16.46.128 255.255.255.224 200.100.0.9
+ip route 172.16.46.208 255.255.255.248 200.100.0.9
+ip route 172.16.32.0 255.255.248.0 200.100.0.9
+ip route 172.16.44.0 255.255.254.0 200.100.0.9
+ip route 172.16.46.192 255.255.255.240 200.100.0.9
+ip route 172.16.32.0 255.255.248.0 200.100.0.5
+ip route 172.16.44.0 255.255.254.0 200.100.0.5
+ip route 172.16.46.192 255.255.255.240 200.100.0.5
+do wr
+
+
+
+

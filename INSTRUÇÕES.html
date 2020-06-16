@@ -1,0 +1,296 @@
+<p><span style="color: #000000;">Voc&ecirc; deve configurar a topologia de modo que as TR&Ecirc;S REDES se comuniquem.</span></p>
+<p><span style="color: #000000;">A rede m&atilde;e 172.16.0.0/16 deve ser utilizada e distribuida por todas as VLANs de todas as redes conforme a necessidade.</span></p>
+<p><span style="color: #000000;">Todos os dispositivos tem que se comunicar com todos os dispositivos e todos eles devem acessar TODOS os sites criados nos servidores.</span></p>
+<p><span style="color: #000000;">Todos os registros de DNS devem ser do tipo A (A RECORDS)</span></p>
+<hr />
+<h1>&nbsp;<span style="color: #000000;">REDE 1</span></h1>
+<p><span style="color: #000000;">Deve-se criar tr&ecirc;s VLANs</span></p>
+<table border="1">
+<tbody>
+<tr style="height: 13px;">
+<td style="text-align: center; height: 13px;"><strong>VLAN</strong></td>
+<td style="text-align: center; height: 13px;"><strong>NOME</strong></td>
+<td style="text-align: center; height: 13px;"><strong>N&ordm; DE HOSTS</strong></td>
+</tr>
+<tr style="height: 13px;">
+<td style="height: 13px;">10</td>
+<td style="height: 13px;">USUARIOS1</td>
+<td style="height: 13px;">65</td>
+</tr>
+<tr style="height: 13px;">
+<td style="height: 13px;">20</td>
+<td style="height: 13px;">TI1</td>
+<td style="height: 13px;">30</td>
+</tr>
+<tr style="height: 13px;">
+<td style="height: 13px;">30</td>
+<td style="height: 13px;">SERVIDORES1</td>
+<td style="height: 13px;">4</td>
+</tr>
+</tbody>
+</table>
+<p><span style="color: #000000;"><br />Deve-se seguir a seguinte tabela de roteamento</span></p>
+<table border="1">
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>DISPOSITIVO</strong></td>
+<td style="text-align: center;"><strong>INTERFACE</strong></td>
+<td style="text-align: center;"><strong>IP</strong></td>
+</tr>
+<tr>
+<td>RT-01</td>
+<td>g0/0.10</td>
+<td>1&ordm; IP V&Aacute;LIDO DA REDE</td>
+</tr>
+<tr>
+<td>RT-01</td>
+<td>g0/0.20</td>
+<td>1&ordm; IP V&Aacute;LIDO DA REDE</td>
+</tr>
+<tr>
+<td>RT-01</td>
+<td>g0/0.30</td>
+<td>1&ordm; IP V&Aacute;LIDO DA REDE</td>
+</tr>
+<tr>
+<td>SRV-01</td>
+<td>fa0</td>
+<td>2&ordm; IP V&Aacute;LIDO DA REDE</td>
+</tr>
+</tbody>
+</table>
+<p>O PC-01 e PC-02 devem receber as informa&ccedil;&otilde;es via DHCP.</p>
+<p>Para o servi&ccedil;o de&nbsp;DHCP, voc&ecirc; deve criar os seguintes escopos:</p>
+<p><strong>NOME DO ESCOPO:&nbsp;VLAN10</strong></p>
+<ul>
+<li>DEFAULT-GATEWAY:&nbsp;1&ordm; IP V&Aacute;LIDO DA REDE</li>
+<li>DNS Server: IP DO SRV-01</li>
+<li>Start IP Address: 2&ordm; IP V&Aacute;LIDO DA REDE</li>
+<li>SUBNET MASK: M&Aacute;SCARA DA VLAN 10</li>
+<li>N&uacute;mero m&aacute;ximo de usu&aacute;rios: 10</li>
+</ul>
+<p><strong>NOME DO ESCOPO:&nbsp;VLAN20</strong></p>
+<ul>
+<li>DEFAULT-GATEWAY: 1&ordm; IP V&Aacute;LIDO DA REDE</li>
+<li>DNS Server: IP DO SRV-01</li>
+<li>Start IP Address: 2&ordm; IP V&Aacute;LIDO DA REDE</li>
+<li>SUBNET MASK: M&Aacute;SCARA DA VLAN 20</li>
+<li>N&uacute;mero m&aacute;ximo de usu&aacute;rios: 10</li>
+</ul>
+<p>Criar o site <a href="http://www.rede1.com.br">www.rede1.com.br</a>&nbsp;no SRV-01, o qual deve exibir a mensagem "BEM VINDO AO SITE DA REDE 1".</p>
+<hr />
+<h1><span style="color: #000000;">REDE 2</span></h1>
+<p><span style="color: #000000;">Deve-se criar tr&ecirc;s VLANs</span></p>
+<table border="1">
+<tbody>
+<tr style="height: 13.2917px;">
+<td style="text-align: center; height: 13.2917px;"><strong>VLAN</strong></td>
+<td style="text-align: center; height: 13.2917px;"><strong>NOME</strong></td>
+<td style="text-align: center; height: 13.2917px;"><strong>N&ordm; DE HOSTS</strong></td>
+</tr>
+<tr style="height: 13px;">
+<td style="height: 13px;">10</td>
+<td style="height: 13px;">USUARIOS2</td>
+<td style="height: 13px;">1024</td>
+</tr>
+<tr style="height: 13px;">
+<td style="height: 13px;">20</td>
+<td style="height: 13px;">TI2</td>
+<td style="height: 13px;">400</td>
+</tr>
+<tr style="height: 13px;">
+<td style="height: 13px;">30</td>
+<td style="height: 13px;">SERVIDORES2</td>
+<td style="height: 13px;">10</td>
+</tr>
+</tbody>
+</table>
+<p><span style="color: #000000;">Deve-se seguir a seguinte tabela de roteamento</span></p>
+<table border="1">
+<tbody>
+<tr style="height: 12px;">
+<td style="text-align: center; height: 12px;"><strong>DISPOSITIVO</strong></td>
+<td style="text-align: center; height: 12px;"><strong>INTERFACE</strong></td>
+<td style="text-align: center; height: 12px;"><strong>IP</strong></td>
+</tr>
+<tr style="height: 12.9584px;">
+<td style="height: 12.9584px;">RT-02</td>
+<td style="height: 12.9584px;">g0/0.10</td>
+<td style="height: 12.9584px;">1&ordm; IP V&Aacute;LIDO DA REDE</td>
+</tr>
+<tr style="height: 12px;">
+<td style="height: 12px;">RT-02</td>
+<td style="height: 12px;">g0/0.20</td>
+<td style="height: 12px;">1&ordm; IP V&Aacute;LIDO DA REDE</td>
+</tr>
+<tr style="height: 12px;">
+<td style="height: 12px;">RT-02</td>
+<td style="height: 12px;">g0/0.30</td>
+<td style="height: 12px;">1&ordm; IP V&Aacute;LIDO DA REDE</td>
+</tr>
+<tr style="height: 12px;">
+<td style="height: 12px;">SRV-02</td>
+<td style="height: 12px;">fa0</td>
+<td style="height: 12px;">2&ordm; IP V&Aacute;LIDO DA REDE</td>
+</tr>
+</tbody>
+</table>
+<p>O PC-03 e PC-04 devem receber as informa&ccedil;&otilde;es via DHCP.</p>
+<p>Para o servi&ccedil;o de&nbsp;DHCP, voc&ecirc; deve criar os seguintes escopos:</p>
+<p><strong>NOME DO ESCOPO:&nbsp;VLAN10</strong></p>
+<ul>
+<li>DEFAULT-GATEWAY:&nbsp;1&ordm; IP V&Aacute;LIDO DA REDE</li>
+<li>DNS Server: IP DO SRV-02</li>
+<li>Start IP Address: 2&ordm; IP V&Aacute;LIDO DA REDE</li>
+<li>SUBNET MASK: M&Aacute;SCARA DA VLAN 10</li>
+<li>N&uacute;mero m&aacute;ximo de usu&aacute;rios: 10</li>
+</ul>
+<p><strong>NOME DO ESCOPO:&nbsp;VLAN20</strong></p>
+<ul>
+<li>DEFAULT-GATEWAY: 1&ordm; IP V&Aacute;LIDO DA REDE</li>
+<li>DNS Server: IP DO SRV-02</li>
+<li>Start IP Address: 2&ordm; IP V&Aacute;LIDO DA REDE</li>
+<li>SUBNET MASK: M&Aacute;SCARA DA VLAN 20</li>
+<li>N&uacute;mero m&aacute;ximo de usu&aacute;rios: 10</li>
+</ul>
+<p>Criar o site&nbsp;<a href="http://www.rede1.com.br/">www.rede2.com.br</a>&nbsp;no SRV-02, o qual deve exibir a mensagem "BEM VINDO AO SITE DA REDE 2".</p>
+<hr />
+<h1>&nbsp;<span style="color: #000000;">REDE 3</span></h1>
+<p><span style="color: #000000;">Deve-se criar tr&ecirc;s VLANs</span></p>
+<table border="1">
+<tbody>
+<tr style="height: 13.2917px;">
+<td style="text-align: center; height: 13.2917px;"><strong>VLAN</strong></td>
+<td style="text-align: center; height: 13.2917px;"><strong>NOME</strong></td>
+<td style="text-align: center; height: 13.2917px;"><strong>N&ordm; DE HOSTS</strong></td>
+</tr>
+<tr style="height: 13px;">
+<td style="height: 13px;">10</td>
+<td style="height: 13px;">USUARIOS3</td>
+<td style="height: 13px;">5000</td>
+</tr>
+<tr style="height: 13px;">
+<td style="height: 13px;">20</td>
+<td style="height: 13px;">TI3</td>
+<td style="height: 13px;">900</td>
+</tr>
+<tr style="height: 13px;">
+<td style="height: 13px;">30</td>
+<td style="height: 13px;">SERVIDORES3</td>
+<td style="height: 13px;">16</td>
+</tr>
+</tbody>
+</table>
+<p><span style="color: #000000;">Deve-se seguir a seguinte tabela de roteamento</span></p>
+<table border="1">
+<tbody>
+<tr style="height: 12px;">
+<td style="text-align: center; height: 12px;"><strong>DISPOSITIVO</strong></td>
+<td style="text-align: center; height: 12px;"><strong>INTERFACE</strong></td>
+<td style="text-align: center; height: 12px;"><strong>IP</strong></td>
+</tr>
+<tr style="height: 12.9584px;">
+<td style="height: 12.9584px;">RT-03</td>
+<td style="height: 12.9584px;">g0/0.10</td>
+<td style="height: 12.9584px;">1&ordm; IP V&Aacute;LIDO DA REDE</td>
+</tr>
+<tr style="height: 12px;">
+<td style="height: 12px;">RT-03</td>
+<td style="height: 12px;">g0/0.20</td>
+<td style="height: 12px;">1&ordm; IP V&Aacute;LIDO DA REDE</td>
+</tr>
+<tr style="height: 12px;">
+<td style="height: 12px;">RT-03</td>
+<td style="height: 12px;">g0/0.30</td>
+<td style="height: 12px;">1&ordm; IP V&Aacute;LIDO DA REDE</td>
+</tr>
+<tr style="height: 12px;">
+<td style="height: 12px;">SRV-03</td>
+<td style="height: 12px;">fa0</td>
+<td style="height: 12px;">2&ordm; IP V&Aacute;LIDO DA REDE</td>
+</tr>
+</tbody>
+</table>
+<p>O PC-05 e PC-06 devem receber as informa&ccedil;&otilde;es via DHCP.</p>
+<p>Para o servi&ccedil;o de&nbsp;DHCP, voc&ecirc; deve criar os seguintes escopos:</p>
+<p><strong>NOME DO ESCOPO:&nbsp;VLAN10</strong></p>
+<ul>
+<li>DEFAULT-GATEWAY:&nbsp;1&ordm; IP V&Aacute;LIDO DA REDE</li>
+<li>DNS Server: IP DO SRV-03</li>
+<li>Start IP Address: 2&ordm; IP V&Aacute;LIDO DA REDE</li>
+<li>SUBNET MASK: M&Aacute;SCARA DA VLAN 10</li>
+<li>N&uacute;mero m&aacute;ximo de usu&aacute;rios: 10</li>
+</ul>
+<p><strong>NOME DO ESCOPO:&nbsp;VLAN20</strong></p>
+<ul>
+<li>DEFAULT-GATEWAY: 1&ordm; IP V&Aacute;LIDO DA REDE</li>
+<li>DNS Server: IP DO SRV-03</li>
+<li>Start IP Address: 2&ordm; IP V&Aacute;LIDO DA REDE</li>
+<li>SUBNET MASK: M&Aacute;SCARA DA VLAN 20</li>
+<li>N&uacute;mero m&aacute;ximo de usu&aacute;rios: 10</li>
+</ul>
+<p>Criar o site&nbsp;<a href="http://www.rede1.com.br/">www.rede3.com.br</a>&nbsp;no SRV-03, o qual deve exibir a mensagem "BEM VINDO AO SITE DA REDE 3".</p>
+<hr />
+<p>&nbsp;</p>
+<h1>REDES WANs</h1>
+<p><strong>WAN1 - 200.100.0.0/30</strong></p>
+<table border="1">
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>DISPOSITIVO</strong></td>
+<td style="text-align: center;"><strong>INTERFACE</strong></td>
+<td style="text-align: center;"><strong>IP</strong></td>
+</tr>
+<tr>
+<td>RT-01</td>
+<td>s0/0/0</td>
+<td>1&ordm; IP V&Aacute;LIDO DA REDE</td>
+</tr>
+<tr>
+<td>RT-02</td>
+<td>s0/0/0</td>
+<td>2&ordm; IP V&Aacute;LIDO DA REDE</td>
+</tr>
+</tbody>
+</table>
+<p><strong>WAN2 - 200.100.0.4/30</strong></p>
+<table border="1">
+<tbody>
+<tr style="height: 13px;">
+<td style="text-align: center; height: 13px;"><strong>DISPOSITIVO</strong></td>
+<td style="text-align: center; height: 13px;"><strong>INTERFACE</strong></td>
+<td style="text-align: center; height: 13px;"><strong>IP</strong></td>
+</tr>
+<tr style="height: 13.1px;">
+<td style="height: 13.1px;">RT-01</td>
+<td style="height: 13.1px;">s0/0/1</td>
+<td style="height: 13.1px;">1&ordm; IP V&Aacute;LIDO DA REDE</td>
+</tr>
+<tr style="height: 13px;">
+<td style="height: 13px;">RT-03</td>
+<td style="height: 13px;">s0/0/0</td>
+<td style="height: 13px;">2&ordm; IP V&Aacute;LIDO DA REDE</td>
+</tr>
+</tbody>
+</table>
+<p><strong><br />WAN3 - 200.100.0.8/30</strong></p>
+<table border="1">
+<tbody>
+<tr style="height: 13px;">
+<td style="text-align: center; height: 13px;"><strong>DISPOSITIVO</strong></td>
+<td style="text-align: center; height: 13px;"><strong>INTERFACE</strong></td>
+<td style="text-align: center; height: 13px;"><strong>IP</strong></td>
+</tr>
+<tr style="height: 13.1px;">
+<td style="height: 13.1px;">RT-02</td>
+<td style="height: 13.1px;">s0/0/1</td>
+<td style="height: 13.1px;">1&ordm; IP V&Aacute;LIDO DA REDE</td>
+</tr>
+<tr style="height: 13px;">
+<td style="height: 13px;">RT-03</td>
+<td style="height: 13px;">s0/0/1</td>
+<td style="height: 13px;">2&ordm; IP V&Aacute;LIDO DA REDE</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
